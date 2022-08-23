@@ -1,16 +1,24 @@
 <script setup>
-import { RouterLink, RouterView } from "vue-router";
+import { RouterLink, RouterView, useRoute } from "vue-router";
+import { computed } from "vue";
+import { Button } from "flowbite-vue";
+
+const route = useRoute();
+
+const isSettingsDisabled = computed(() => {
+  return route.name === "settings";
+});
 </script>
 
 <template>
-  <div class="px-3">
-    <nav class="my-3 flex justify-between">
-      <RouterLink to="/" class="font-bold">Digital Frame</RouterLink>
+  <div class="p-5">
+    <nav class="mb-8 flex justify-between items-center">
+      <RouterLink to="/" class="font-bold text-2xl">Digital Frame</RouterLink>
       <RouterLink
+        :is="isSettingsDisabled ? 'span' : 'router-link'"
         to="/settings"
-        class="inline-block rounded-lg px-5 py-2 bg-gray-600 tracking-wider font-semibold"
       >
-        Settings
+        <Button :disabled="isSettingsDisabled">Settings</Button>
       </RouterLink>
     </nav>
     <RouterView />

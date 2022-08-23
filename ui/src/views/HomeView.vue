@@ -1,5 +1,7 @@
-<script setup></script>
+<script setup>
+import AlbumGrid from "@/components/AlbumGrid.vue";
+</script>
 
 <template>
-  <main>Home view</main>
+  <AlbumGrid />
 </template>
