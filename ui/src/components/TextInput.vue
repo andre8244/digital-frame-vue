@@ -3,6 +3,7 @@ defineProps({
   id: {
     type: String,
     required: true,
+    value: String,
   },
   label: {
     type: String,
@@ -23,6 +24,8 @@ defineProps({
     <input
       type="text"
       :id="id"
+      :value="value"
+      @input="(event) => (value = event.target.value)"
       class="bg-gray-800 border border-gray-600 rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
       :placeholder="placeholder"
     />
